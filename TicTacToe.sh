@@ -162,7 +162,10 @@ function checkWinningMove()
 	count2=6
 	for (( index=1; index<=3; index++ ))
 	do
-		if [[ ${board[$column]} == $checkSign ]] && [[ ${board[$column]} == ${board[$count1]} ]] && [[ ${board[$(($count1+3))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$column]} ]] && [[ ${board[$(($count1+3))]} == "-" ]]
+	checkWinningMove $computer
+	if [[ $played == 0 ]]
+	then
+		ch	if [[ ${board[$column]} == $checkSign ]] && [[ ${board[$column]} == ${board[$count1]} ]] && [[ ${board[$(($count1+3))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$column]} ]] && [[ ${board[$(($count1+3))]} == "-" ]]
 		then
 			board[$(($count1+3))]=$computer
 			played=1
@@ -274,8 +277,8 @@ function computerTurn()
 			position=$((RANDOM%9))
 		done
 		board[$position]=$computer
-   fi
-   displayBoard
+	fi
+	displayBoard
 	if [[ 1 == $(checkHorizontal $computer) ]]
 	then
 		winner=1
