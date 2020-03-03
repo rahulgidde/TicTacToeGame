@@ -70,7 +70,7 @@ function checkHorizontal()
 			if [ ${board[$index2]} == $value ]
 			then
 				((flag++))
-				fi
+			fi
 		done
 		if [ $flag -eq $row ]
 		then
@@ -118,8 +118,8 @@ function checkDiagonal()
 	elif [[ ${board[2]} == ${board[4]} ]] && [[ ${board[4]}  ==  ${board[6]} ]] && [[ ${board[6]} == $1 ]]
 	then
 		echo  1
-   else
-      echo 0
+	else
+		echo 0
 	fi
 }
 
@@ -165,7 +165,7 @@ function checkWinningMove()
 	checkWinningMove $computer
 	if [[ $played == 0 ]]
 	then
-		ch	if [[ ${board[$column]} == $checkSign ]] && [[ ${board[$column]} == ${board[$count1]} ]] && [[ ${board[$(($count1+3))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$column]} ]] && [[ ${board[$(($count1+3))]} == "-" ]]
+		if [[ ${board[$column]} == $checkSign ]] && [[ ${board[$column]} == ${board[$count1]} ]] && [[ ${board[$(($count1+3))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$column]} ]] && [[ ${board[$(($count1+3))]} == "-" ]]
 		then
 			board[$(($count1+3))]=$computer
 			played=1
