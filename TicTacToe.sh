@@ -223,7 +223,6 @@ function checkWinningMove()
 	fi
 }
 
-
 #FUNCTION FOR PLAYER TURN
 function playerTurn()
 {
