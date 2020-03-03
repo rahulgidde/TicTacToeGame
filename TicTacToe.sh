@@ -55,7 +55,6 @@ function toss()
    echo $win
 }
 
-
 #FUNCTION TO CHECK WINNER HORIZONTALY
 function checkHorizontal()
 {
@@ -165,7 +164,7 @@ function playerTurn()
 #FUNCTION FOR COMPUTER TURN
 function computerTurn()
 {
-	read -p "Enter your position in between 0 to 8: " position
+	position=$((0+RANDOM%8))
 	if [ $position -gt 8 ]
 	then
 		echo "Enter Valid Position"
