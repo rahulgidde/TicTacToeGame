@@ -3,8 +3,9 @@ echo "-------------Welcome To Tic Tac Toe Game-----------"
 
 #CONSTANT
 ARRAYSIZE=8
+TOTAL_TURN=9
 
-#VARIABLE
+#VARIABLES
 winner=0
 position=0
 turnCount=0
@@ -263,14 +264,18 @@ function computerTurn()
 	checkWinningMove $computer
 	if [[ $played == 0 ]]
 	then
+		checkWinningMove $player
+	fi
+	if [ $played == 0 ]
+	then
 		position=$((RANDOM%9))
 		while [[ ${board[$position]} != "-" ]]
 		do
 			position=$((RANDOM%9))
 		done
 		board[$position]=$computer
-	fi
-	displayBoard
+   fi
+   displayBoard
 	if [[ 1 == $(checkHorizontal $computer) ]]
 	then
 		winner=1
@@ -304,7 +309,7 @@ do
 	fi
 	if [[ $turnCount -eq $TOTAL_TURN ]]
 	then
-		echo "It's Tie"
+		echo "Tie..!!"
 	fi
 done
 
