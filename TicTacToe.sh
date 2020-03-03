@@ -238,6 +238,18 @@ function checkCorners()
 	done
 }
 
+#FUNCTION TO TAKE CENTER
+function takeCenter()
+{
+	local center=4
+	if [[ ${board[$center]} == "-" ]]
+	then
+		board[$center]=$computer
+		played=1
+		return
+	fi
+}
+
 #FUNCTION FOR PLAYER TURN
 function playerTurn()
 {
@@ -283,6 +295,10 @@ function computerTurn()
 	if [[ $played == 0 ]]
 	then
 		checkCorners
+	fi
+	if [[ $played == 0 ]]
+	then
+		takeCenter
 	fi
 	if [ $played == 0 ]
 	then
