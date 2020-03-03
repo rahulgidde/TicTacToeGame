@@ -23,3 +23,19 @@ function printBoard()
    echo " | "${board[6]}" | "${board[7]}" | "${board[8]}" | "
    echo " -------------"
 }
+
+#FUNCTION TO ASSIGN LETTER TO PLAYER
+function assignLetter()
+{
+   check=$((RANDOM%2))
+   if [ $check -eq 0 ]
+   then
+      player="o"
+      computer="x"
+   else
+      player="x"
+      computer="o"
+   fi
+}
+printBoard
+assignLetter
