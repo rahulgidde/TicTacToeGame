@@ -128,7 +128,6 @@ function getBoard()
 	value=$1
 	board[$position]=$value
 	displayBoard
-
 	if [[ 1 == $(checkHorizontal $value) ]]
 	then
 		winner=1
@@ -163,7 +162,7 @@ function playerTurn()
 	fi
 }
 
-#FUNCTION FOR PLAYER TURN
+#FUNCTION FOR COMPUTER TURN
 function computerTurn()
 {
 	read -p "Enter your position in between 0 to 8: " position
