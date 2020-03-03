@@ -14,7 +14,7 @@ do
 done
 
 #FUNCTION TO PRINT BOARD
-function printBoard()
+function displayBoard()
 {
    echo " | "${board[0]}" | "${board[1]}" | "${board[2]}" | "
    echo " -------------"
@@ -51,7 +51,7 @@ function toss()
    echo $win
 }
 
-printBoard
 assignLetter
 toss
+displayBoard
 
