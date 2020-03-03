@@ -162,9 +162,6 @@ function checkWinningMove()
 	count2=6
 	for (( index=1; index<=3; index++ ))
 	do
-	checkWinningMove $computer
-	if [[ $played == 0 ]]
-	then
 		if [[ ${board[$column]} == $checkSign ]] && [[ ${board[$column]} == ${board[$count1]} ]] && [[ ${board[$(($count1+3))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$column]} ]] && [[ ${board[$(($count1+3))]} == "-" ]]
 		then
 			board[$(($count1+3))]=$computer
@@ -227,6 +224,20 @@ function checkWinningMove()
 	fi
 }
 
+#FUNCTION TO CHECK CORNERS ARE EMPTY IF YES THEN OCCUPY
+function checkCorners()
+{
+	for (( index=0; index<=$ARRAYSIZE; index=$index+2 ))
+	do
+		if [[ ${board[$index]} == "-" && $index != 4 ]]
+		then
+			board[$index]=$computer
+			played=1
+			return
+		fi
+	done
+}
+
 #FUNCTION FOR PLAYER TURN
 function playerTurn()
 {
@@ -268,6 +279,10 @@ function computerTurn()
 	if [[ $played == 0 ]]
 	then
 		checkWinningMove $player
+	fi
+	if [[ $played == 0 ]]
+	then
+		checkCorners
 	fi
 	if [ $played == 0 ]
 	then
