@@ -37,5 +37,21 @@ function assignLetter()
       computer="o"
    fi
 }
+
+#FUNCTION TO TOSS FOR WHO WILL PLAY FIRST
+function toss()
+{
+   randomToss=$((RANDOM%2))
+   if [ $randomToss -eq 0 ]
+   then
+      win=0
+   else
+      win=1
+   fi
+   echo $win
+}
+
 printBoard
 assignLetter
+toss
+
