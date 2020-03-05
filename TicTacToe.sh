@@ -9,6 +9,7 @@ TOTAL_TURN=9
 winner=0
 position=0
 turnCount=0
+played=0
 
 #DECLARE ARRAY
 declare -a board
@@ -157,7 +158,7 @@ function checkWinningMove()
 	done
 
 	#CHECK COLUMN WISE
-	column=0
+	local column=0
 	count1=3
 	count2=6
 	for (( index=1; index<=3; index++ ))
@@ -185,7 +186,7 @@ function checkWinningMove()
 	done
 
 	#CHECK DIAGONAL
-	diagonal=0
+	local diagonal=0
 	count1=4
 	count2=8
 	if [[ ${board[$diagonal]} == $checkSign ]] && [[ ${board[$diagonal]} == ${board[$count1]} ]] && [[ ${board[$(($count1+4))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$diagonal]} ]] && [[ ${board[$(($count1+4))]} == "-" ]]
@@ -344,6 +345,7 @@ do
 	if [[ $turnCount -eq $TOTAL_TURN ]]
 	then
 		echo "Tie..!!"
+		break
 	fi
 done
 
