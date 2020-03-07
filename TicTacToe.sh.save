@@ -23,19 +23,12 @@ done
 #FUNCTION TO PRINT BOARD
 function displayBoard()
 {
-	local row=3
-	local count=0
-	for (( index=0; index<$row; index++ ))
-	do
-		for (( index1=0; index1<$row; index1++ ))
-		do
-			printf "| ${board[$count]} "
-			((count++))
-		done
-		printf "|"
-		printf "\n"
-		echo  "-------------"
-	done
+	echo " | "${board[0]}" | "${board[1]}" | "${board[2]}" | "
+	echo " -------------"
+	echo " | "${board[3]}" | "${board[4]}" | "${board[5]}" | "
+	echo " -------------"
+	echo " | "${board[6]}" | "${board[7]}" | "${board[8]}" | "
+	echo " -------------"
 }
 
 #FUNCTION TO ASSIGN LETTER TO PLAYER
@@ -196,40 +189,40 @@ function checkWinningMove()
 	local diagonal=0
 	count1=4
 	count2=8
-	if [[ ${board[$diagonal]} == $checkSign ]] && [[ ${board[$diagonal]} == ${board[$count1]} ]] && [[ ${board[$(($count1+4))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$diagonal]} ]] && [[ ${board[$(($count1+4))]} == "-" ]]
-	then
-		board[$(($count1+4))]=$computer
-		played=1
-		return
-	elif [[ ${board[$diagonal]} == $checkSign  ]]  && [[  ${board[$diagonal]} == ${board[$count2]} ]] && [[ ${board[$(($count2-4))]} == "-" ]] || [[ ${board[$count2]} == $checkSign ]] && [[ ${board[$count2]} == ${board[$diagonal]} ]] && [[ ${board[$(($count2-4))]} == "-" ]]
-	then
-		board[$(($count2-4))]=$computer
-		played=1
-		return
-	elif  [[ ${board[$count1]}${board[$count2]} == $checkSign$checkSign  &&  ${board[$(($count1-4))]} == "-" ]]
-	then
-		board[$(($count1-4))]=$computer
-		played=1
-		return
-	fi
+		if [[ ${board[$diagonal]} == $checkSign ]] && [[ ${board[$diagonal]} == ${board[$count1]} ]] && [[ ${board[$(($count1+4))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$diagonal]} ]] && [[ ${board[$(($count1+4))]} == "-" ]]
+		then
+			board[$(($count1+4))]=$computer
+			played=1
+			return
+		elif [[ ${board[$diagonal]} == $checkSign  ]]  && [[  ${board[$diagonal]} == ${board[$count2]} ]] && [[ ${board[$(($count2-4))]} == "-" ]] || [[ ${board[$count2]} == $checkSign ]] && [[ ${board[$count2]} == ${board[$diagonal]} ]] && [[ ${board[$(($count2-4))]} == "-" ]]
+		then
+			board[$(($count2-4))]=$computer
+			played=1
+			return
+		elif  [[ ${board[$count1]}${board[$count2]} == $checkSign$checkSign  &&  ${board[$(($count1-4))]} == "-" ]]
+		then
+			board[$(($count1-4))]=$computer
+			played=1
+			return
+		fi
 	count2=$(($count2-2))
 	diagonal=$(($diagonal+2))
-	if [[ ${board[$diagonal]} == $checkSign ]] && [[ ${board[$diagonal]} == ${board[$count1]} ]] && [[ ${board[$(($count1+2))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$diagonal]} ]] && [[ ${board[$(($count1+2))]} == "-" ]]
-	then
-		board[$(($count1+2))]=$computer
-		played=1
-		return
-	elif [[ ${board[$diagonal]} == $checkSign  ]]  && [[  ${board[$diagonal]} == ${board[$count2]} ]] && [[ ${board[$(($count2-2))]} == "-" ]] || [[ ${board[$count2]} == $checkSign ]] && [[ ${board[$count2]} == ${board[$diagonal]} ]] && [[ ${board[$(($count2-2))]} == "-" ]]
-	then
-		board[$(($count2-2))]=$computer
-		played=1
-		return
-	elif  [[ ${board[$count1]}${board[$count2]} == $checkSign$checkSign  &&  ${board[$(($count1-4))]} == "-" ]]
-	then
-		board[$(($count1-4))]=$computer
-		played=1
-		return
-	fi
+		if [[ ${board[$diagonal]} == $checkSign ]] && [[ ${board[$diagonal]} == ${board[$count1]} ]] && [[ ${board[$(($count1+2))]} == "-" ]] || [[ ${board[$count1]} == $checkSign ]] && [[ ${board[$count1]} == ${board[$diagonal]} ]] && [[ ${board[$(($count1+2))]} == "-" ]]
+		then
+			board[$(($count1+2))]=$computer
+			played=1
+			return
+		elif [[ ${board[$diagonal]} == $checkSign  ]]  && [[  ${board[$diagonal]} == ${board[$count2]} ]] && [[ ${board[$(($count2-2))]} == "-" ]] || [[ ${board[$count2]} == $checkSign ]] && [[ ${board[$count2]} == ${board[$diagonal]} ]] && [[ ${board[$(($count2-2))]} == "-" ]]
+		then
+			board[$(($count2-2))]=$computer
+			played=1
+			return
+		elif  [[ ${board[$count1]}${board[$count2]} == $checkSign$checkSign  &&  ${board[$(($count1-4))]} == "-" ]]
+		then
+			board[$(($count1-4))]=$computer
+			played=1
+			return
+		fi
 }
 
 #FUNCTION TO CHECK CORNERS ARE EMPTY IF YES THEN OCCUPY
@@ -352,7 +345,7 @@ do
 	if [[ $turnCount -eq $TOTAL_TURN ]]
 	then
 		echo "Tie..!!"
-		break
+		break;
 	fi
 done
 
