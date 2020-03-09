@@ -1,5 +1,5 @@
 #!/bin/bash -x
-echo "-------------Welcome To Tic Tac Toe Game-----------"
+echo "------------Welcome To Tic Tac Toe Game-----------"
 
 #CONSTANT
 ARRAYSIZE=8
